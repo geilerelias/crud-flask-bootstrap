@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="card p-4 mx-auto" style="max-width: 600px;">
+    <h1 class="text-center my-4">{% if person %}Actualizar{% else %}Adicionar{% endif %} Persona</h1>
+    <form method="post"  >
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          value="{{ person.nombre if person else '' }}"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input
+          type="text"
+          id="telefono"
+          name="telefono"
+          class="form-control"
+          value="{{ person.telefono if person else '' }}"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="sexo" class="form-label">Sexo</label>
+        <select id="sexo" name="sexo" class="form-select" required>
+          <option value="">Seleccione</option>
+          <option value="M" {% if person and person.sexo == "M" %}selected{% endif %}>Masculino</option>
+          <option value="F" {% if person and person.sexo == "F" %}selected{% endif %}>Femenino</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">
+        {% if person %}Actualizar{% else %}Crear{% endif %}
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

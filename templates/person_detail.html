@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-4">
+  <div class="card p-4">
+    <h1 class="mb-3">{{ person.nombre }}</h1>
+    <p><strong>Teléfono:</strong> {{ person.telefono }}</p>
+    <p><strong>Sexo:</strong> {{ person.sexo }}</p>
+    <div class="mt-4">
+      <a
+        href="{{ url_for('edit_person', person_id=person.id) }}"
+        class="btn btn-warning me-2"
+        >Editar</a
+      >
+      <a
+        href="{{ url_for('delete_person', person_id=person.id) }}"
+        class="btn btn-danger"
+        >Eliminar</a
+      >
+    </div>
+  </div>
+  {% endblock %}
+</div>

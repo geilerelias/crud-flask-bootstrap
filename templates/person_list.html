@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-4">
+  <h1 class="mb-4">Personas</h1>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Sexo</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for person in persons %}
+      <tr>
+        <td>{{ person.id }}</td>
+        <td>{{ person.nombre }}</td>
+        <td>{{ person.telefono }}</td>
+        <td>{{ person.sexo }}</td>
+        <td>
+          <a
+            href="{{ url_for('person_detail', person_id=person.id) }}"
+            class="btn btn-info btn-sm"
+            >Detalles</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
